@@ -1,0 +1,21 @@
+.App{
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #22201f;
+  font-size: 5rem;
+  color: #ffffff;
+}
+
+.list{
+  text-transform: capitalize;
+  background-color: rgb(167, 32, 194);
+  border: 1px solid white;
+  border-radius: 1rem;
+  margin: 2rem 0;
+  padding: 1rem 2rem;
+}
