@@ -31,6 +31,7 @@ function App() {
       <div>
         {fruitList.map((item, index) => (
           <div
+            key={index}
             className="list"
             draggable
             onDragEnter={() => (dragItem.current = index)}
@@ -38,7 +39,7 @@ function App() {
             onDragEnd={handleSort}
             onDragOver={(e) => e.preventDefault()}
           >
-            <h3 key={index}>{item}</h3>
+            <h3>{item}</h3>
           </div>
         ))}
       </div>
