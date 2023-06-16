@@ -32,7 +32,7 @@ function App() {
         {fruitList.map((item, index) => (
           <div
             key={index}
-            className="list"
+            className="listItem"
             draggable
             onDragEnter={() => (dragItem.current = index)}
             onDragStart={() => (dragOverItem.current = index)}
