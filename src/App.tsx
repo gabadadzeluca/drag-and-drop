@@ -38,6 +38,11 @@ function App() {
   const dragItemOne = useRef<any>(null);
   const dragItemTwo = useRef<any>(null);
 
+  const resetRefs = () => {
+    dragItemTwo.current = null;
+    dragItemOne.current = null;
+  };
+
   return (
     <div className="App">
       <div className="container">
@@ -45,7 +50,7 @@ function App() {
           className="list1"
           ref={listOneRef}
           onDragEnter={(e) => {
-            dragItemTwo.current = e.currentTarget;
+            dragItemTwo.current = e.target;
           }}
         >
           {listOne.map((item, index) => (
@@ -53,7 +58,7 @@ function App() {
               key={index}
               className="listItem"
               draggable
-              onDragEnd={() =>
+              onDragEnd={() => {
                 handleDragEnd(
                   listOne,
                   listTwo,
@@ -62,8 +67,9 @@ function App() {
                   listTwoRef,
                   setListOne,
                   setListTwo
-                )
-              }
+                );
+                resetRefs();
+              }}
             >
               <h3>{item}</h3>
             </div>
@@ -74,7 +80,7 @@ function App() {
           className="list2"
           ref={listTwoRef}
           onDragEnter={(e: React.DragEvent<HTMLDivElement>) => {
-            dragItemOne.current = e.currentTarget;
+            dragItemOne.current = e.target;
           }}
         >
           {listTwo.map((item, index) => (
@@ -82,7 +88,7 @@ function App() {
               draggable
               key={index}
               className="listItem"
-              onDragEnd={() =>
+              onDragEnd={() => {
                 handleDragEnd(
                   listTwo,
                   listOne,
@@ -91,8 +97,9 @@ function App() {
                   listOneRef,
                   setListTwo,
                   setListOne
-                )
-              }
+                );
+                resetRefs();
+              }}
             >
               {item}
             </div>
