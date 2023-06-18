@@ -11,6 +11,12 @@
   color: #ffffff;
 }
 
+.container{
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+}
+
 .listItem{
   text-transform: capitalize;
   background-color: rgb(167, 32, 194);
@@ -19,4 +25,13 @@
   margin: 2rem 0;
   padding: 1rem 2rem;
   cursor: pointer;
+  text-align: center;
+}
+
+.list1, .list2{
+  width: 45%;
+}
+
+.list2{
+  background-color: white;
 }
