@@ -1,12 +1,14 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./App.css";
+
+const fruits_arr = ["apple", "banana", "peach", "pineapple", "kiwi"];
 
 const handleDragEnd = (
   arr1: string[],
   arr2: string[],
   id: number,
-  ref1: any,
-  ref2: any,
+  ref1: React.MutableRefObject<HTMLDivElement | null>,
+  ref2: React.MutableRefObject<HTMLDivElement | null>,
   setter1: React.Dispatch<React.SetStateAction<string[]>>,
   setter2: React.Dispatch<React.SetStateAction<string[]>>
 ) => {
@@ -24,19 +26,13 @@ const handleDragEnd = (
 };
 
 function App() {
-  const [listOne, setListOne] = useState<string[]>([
-    "apple",
-    "banana",
-    "peach",
-    "pineapple",
-    "kiwi",
-  ]);
+  const [listOne, setListOne] = useState<string[]>(fruits_arr);
   const [listTwo, setListTwo] = useState<string[]>([]);
 
   const listOneRef = useRef<HTMLDivElement>(null);
   const listTwoRef = useRef<HTMLDivElement>(null);
-  const dragItemOne = useRef<any>(null);
-  const dragItemTwo = useRef<any>(null);
+  const dragItemOne = useRef<HTMLDivElement | null>(null);
+  const dragItemTwo = useRef<HTMLDivElement | null>(null);
 
   const resetRefs = () => {
     dragItemTwo.current = null;
@@ -49,8 +45,9 @@ function App() {
         <div
           className="list1"
           ref={listOneRef}
-          onDragEnter={(e) => {
+          onDragEnter={(e: MouseEvent<HTMLDivElement>) => {
             dragItemTwo.current = e.target;
+            console.log(e.target);
           }}
         >
           {listOne.map((item, index) => (
