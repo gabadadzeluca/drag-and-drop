@@ -45,9 +45,8 @@ function App() {
         <div
           className="list1"
           ref={listOneRef}
-          onDragEnter={(e: MouseEvent<HTMLDivElement>) => {
-            dragItemTwo.current = e.target;
-            console.log(e.target);
+          onDragEnter={(e: React.MouseEvent<HTMLDivElement>) => {
+            dragItemTwo.current = e.target as HTMLDivElement;
           }}
         >
           {listOne.map((item, index) => (
@@ -77,7 +76,7 @@ function App() {
           className="list2"
           ref={listTwoRef}
           onDragEnter={(e: React.DragEvent<HTMLDivElement>) => {
-            dragItemOne.current = e.target;
+            dragItemOne.current = e.target as HTMLDivElement;
           }}
         >
           {listTwo.map((item, index) => (
